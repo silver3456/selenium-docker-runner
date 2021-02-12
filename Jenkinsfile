@@ -6,8 +6,7 @@ pipeline {
 				sh "docker pull silver3456/selenium-docker"
 			}
 		}
-	}
-	stages {
+
 		stage("Start Grid") {
 			steps {
 				sh "docker-compose up --build -d hub chrome firefox"
@@ -19,6 +18,7 @@ pipeline {
 			}
 		}
 	}
+	
 	post {
 		always {
 			archiveArtifacts artifacts: 'output/**'
